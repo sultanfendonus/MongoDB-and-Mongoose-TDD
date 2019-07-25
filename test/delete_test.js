@@ -40,7 +40,7 @@ describe('delete Test',()=>{
             })
     });
 
-    it('should delete a user by its class and find by id',(done)=>{
+    it('should delete a user by its class instance and findbyidandRemove',(done)=>{
         User.findByIdAndRemove(singleUser._id)
             .then(()=>User.findOne({name:'Joe'}))
                 .then((users)=>{

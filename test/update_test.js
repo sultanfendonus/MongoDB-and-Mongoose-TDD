@@ -22,17 +22,17 @@ describe('Update Test',()=>{
         })
     }
 
-    it('should update data set and save by model instance',(done)=>{
+    it('should update data set and save method by model instance',(done)=>{
         singleUser.set('name','alex');
         assertName(singleUser.save(),done);    
     });
 
-    it('should update by update method by model instance',(done)=>{
+    it('should update data by update method - model instance',(done)=>{
         assertName(singleUser.update({name:'alex'}),done);
 
     })
 
-    it('should find and update by model class',(done)=>{
+    it('should find and update data by model class',(done)=>{
         assertName(
             User.update({name:'Joe'},{name:'alex'}),
             done
