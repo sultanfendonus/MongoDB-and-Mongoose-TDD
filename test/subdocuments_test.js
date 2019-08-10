@@ -17,4 +17,23 @@ describe('subdocument',()=>{
 
         
     })
+
+    it('will save post in an existing data',(done)=>{
+        const Joe = new User({
+            name:'Joe',
+            posts:[]
+        });
+
+        Joe.save()
+            .then(()=>User.findOne({name:'Joe'}))
+            .then((user)=>{
+                user.posts.push({title:"new post"})
+                return user.save();
+            })
+            .then(()=>User.findOne({name:'Joe'}))
+            .then((user)=>{
+                assert(user.posts[0].title==='new post');
+                done();
+            })
+    })
 })
